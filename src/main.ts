@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import express from 'express';
+import cors from 'cors';
 import { config } from 'dotenv';
 import dataSource from './config/typeorm.config';
 import eventRoutes from './routes/events';
@@ -9,6 +10,11 @@ config();
 
 const app = express();
 app.use(express.json());
+
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path}`);
