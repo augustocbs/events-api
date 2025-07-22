@@ -15,7 +15,8 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       NODE_ENV: development 
     depends_on:
-    - db
+      db:
+        condition: service_healthy 
     volumes:
     - .:/app
     - /app/node_modules 
@@ -29,7 +30,13 @@ services:
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_DB: ${DB_DATABASE}
     volumes:
-    - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
 volumes:
   db_data:
