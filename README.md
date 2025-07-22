@@ -36,6 +36,11 @@ DB_NAME=events_db
 docker-compose up -d
 ```
 
+2. Execute as migrações:
+```bash
+npm run typeorm migration:run -- -d src/config/typeorm.config.ts
+```
+
 Pronto! A aplicação já estará rodando em http://localhost
 
 #### Desenvolvimento Local
