@@ -1,5 +1,5 @@
 import { Repository } from 'typeorm';
-import dataSource from '../config/typeorm.config';
+import dataSource from '../../../config/typeorm.config';
 import { Participant } from '../entities/participant.entity';
 
 export class ParticipantService {

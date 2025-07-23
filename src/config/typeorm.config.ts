@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { Event } from '../entities/event.entity';
-import { Participant } from '../entities/participant.entity';
+import { Event } from '../modules/event/entities/event.entity';
+import { Participant } from '../modules/participant/entities/participant.entity';
 
 dotenv.config();
 

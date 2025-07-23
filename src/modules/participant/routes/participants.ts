@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import dataSource from '../config/typeorm.config';
+import dataSource from '../../../config/typeorm.config';
 import { Participant } from '../entities/participant.entity';
 
 const router = Router();

@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
-import dataSource from '../config/typeorm.config';
+import dataSource from '../../../config/typeorm.config';
 import { Event } from '../entities/event.entity';
-import { Participant } from '../entities/participant.entity';
+import { Participant } from '../../participant/entities/participant.entity';
 
 export class EventService {
   private eventRepository: Repository<Event>;

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
-import { Event } from './event.entity';
+import { Event } from '../../event/entities/event.entity';
 
 @Entity('participants')
 export class Participant {

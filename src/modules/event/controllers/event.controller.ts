@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import dataSource from '../config/typeorm.config';
+import dataSource from '../../../config/typeorm.config';
 import { Event } from '../entities/event.entity';
-import { Participant } from '../entities/participant.entity';
+import { Participant } from '../../participant/entities/participant.entity';
 
 export const eventController = {
   // POST /events
