@@ -18,6 +18,42 @@ router.post('/', async (req: Request<{}, {}, { name: string; description: string
     }
 });
 
+//Listar eventos
+router.get('/', async (req: Request, res: Response) => {
+  try {
+    const eventRepository = dataSource.getRepository(Event);
+    const events = await eventRepository.find();
+
+    if (!events || events.length === 0) {
+      return res.status(404).json({ message: 'Nenhum evento encontrado' });
+    }
+
+    return res.json(events);
+  } catch (error) {
+    console.error('Erro ao listar eventos:', error);
+    return res.status(500).json({ message: 'Erro interno' });
+  }
+});
+
+//Listar detalhes de um evento
+router.get('/:eventId', async (req: Request, res: Response) => {
+  try {
+    const eventRepository = dataSource.getRepository(Event);
+    const event = await eventRepository.findOne({
+      where: { id: Number(req.params.eventId) },
+    });
+
+    if (!event) {
+      return res.status(404).json({ message: 'Evento não encontrado' });
+    }
+
+    return res.json(event);
+  } catch (error) {
+    console.error('Erro ao listar eventos:', error);
+    return res.status(500).json({ message: 'Erro interno' });
+  }
+});
+
 // Listar participantes de um evento
 router.get('/:eventId/participants', async (req: Request<{ eventId: string }>, res: Response) => {
     try {
